@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABI Portfolio - Skills</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Entrance Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+    .fade-in-delay-1 {
+      animation-delay: 0.3s;
+    }
+    .fade-in-delay-2 {
+      animation-delay: 0.6s;
+    }
+    .fade-in-delay-3 {
+      animation-delay: 0.9s;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f5f7ff;
+      color: #222;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-variant: normal;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #2f6bff;
+      border-bottom: 2px solid #2f6bff;
+      padding-bottom: 3px;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      padding: 50px 10%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: #222;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-category h3 {
+      color: #2f6bff;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .skill-list {
+      list-style: none;
+    }
+
+    .skill-list li {
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list li::before {
+      content: "•";
+      color: #2f6bff;
+      font-weight: bold;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+
+    .progress {
+      height: 100%;
+      background: #2f6bff;
+      border-radius: 4px;
+      transition: width 1s ease-in-out;
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="cursor-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1;"></canvas>
+
+  <!-- Navbar -->
+  <header>
+    <h2 class="fade-in">Portfolio</h2>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="fade-in fade-in-delay-1">Home</a></li>
+        <li><a href="about.html" class="fade-in fade-in-delay-2">About</a></li>
+        <li><a href="skills.html" class="active fade-in fade-in-delay-3">Skills</a></li>
+        <li><a href="work.html" class="fade-in fade-in-delay-1">Work</a></li>
+        <li><a href="contact.html" class="fade-in fade-in-delay-2">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Skills Section -->
+  <section class="skills-container">
+    <h1 class="section-title fade-in">Technical Skills</h1>
+    
+    <div class="skills-grid">
+      <div class="skill-category fade-in fade-in-delay-1">
+        <h3>Frontend Development</h3>
+        <ul class="skill-list">
+          <li>HTML5 & CSS3
+            <div class="progress-bar">
+              <div class="progress" style="width: 95%;"></div>
+            </div>
+          </li>
+          <li>JavaScript (ES6+)
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%;"></div>
+            </div>
+          </li>
+          <li>React.js
+            <div class="progress-bar">
+              <div class="progress" style="width: 85%;"></div>
+            </div>
+          </li>
+          <li>Responsive Design
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%;"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category fade-in fade-in-delay-2">
+        <h3>Backend Development</h3>
+        <ul class="skill-list">
+          <li>Node.js
+            <div class="progress-bar">
+              <div class="progress" style="width: 85%;"></div>
+            </div>
+          </li>
+          <li>Python
+            <div class="progress-bar">
+              <div class="progress" style="width: 80%;"></div>
+            </div>
+          </li>
+          <li>SQL & NoSQL
+            <div class="progress-bar">
+              <div class="progress" style="width: 75%;"></div>
+            </div>
+          </li>
+          <li>RESTful APIs
+            <div class="progress-bar">
+              <div class="progress" style="width: 85%;"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="skill-category fade-in fade-in-delay-3">
+        <h3>Tools & Technologies</h3>
+        <ul class="skill-list">
+          <li>Git & GitHub
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%;"></div>
+            </div>
+          </li>
+          <li>Docker
+            <div class="progress-bar">
+              <div class="progress" style="width: 70%;"></div>
+            </div>
+          </li>
+          <li>AWS Cloud Services
+            <div class="progress-bar">
+              <div class="progress" style="width: 75%;"></div>
+            </div>
+          </li>
+          <li>CI/CD
+            <div class="progress-bar">
+              <div class="progress" style="width: 80%;"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Cursor animation effect
+    const canvas = document.getElementById('cursor-bg');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    let circles = [];
+    document.addEventListener('mousemove', function(e) {
+      circles.push({
+        x: e.clientX,
+        y: e.clientY,
+        r: 0,
+        alpha: 0.5,
+        color: `rgba(47,107,255,0.3)`
+      });
+    });
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < circles.length; i++) {
+        let c = circles[i];
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, c.r, 0, 2 * Math.PI);
+        ctx.fillStyle = c.color;
+        ctx.globalAlpha = c.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        c.r += 1.5;
+        c.alpha -= 0.01;
+        if (c.alpha <= 0) circles.splice(i, 1), i--;
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>

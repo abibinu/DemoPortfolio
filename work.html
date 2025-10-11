@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABI Portfolio - Work</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Entrance Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+    .fade-in-delay-1 {
+      animation-delay: 0.3s;
+    }
+    .fade-in-delay-2 {
+      animation-delay: 0.6s;
+    }
+    .fade-in-delay-3 {
+      animation-delay: 0.9s;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f5f7ff;
+      color: #222;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-variant: normal;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #2f6bff;
+      border-bottom: 2px solid #2f6bff;
+      padding-bottom: 3px;
+    }
+
+    /* Work Section */
+    .work-container {
+      padding: 50px 10%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: #222;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background: #2f6bff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      color: #222;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-description {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tag {
+      background: #f0f0f0;
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      color: #2f6bff;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .project-links a {
+      text-decoration: none;
+      color: #2f6bff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+
+    .project-links a:hover {
+      color: #1d4ed8;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="cursor-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1;"></canvas>
+
+  <!-- Navbar -->
+  <header>
+    <h2 class="fade-in">Portfolio</h2>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="fade-in fade-in-delay-1">Home</a></li>
+        <li><a href="about.html" class="fade-in fade-in-delay-2">About</a></li>
+        <li><a href="skills.html" class="fade-in fade-in-delay-3">Skills</a></li>
+        <li><a href="work.html" class="active fade-in fade-in-delay-1">Work</a></li>
+        <li><a href="contact.html" class="fade-in fade-in-delay-2">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Work Section -->
+  <section class="work-container">
+    <h1 class="section-title fade-in">My Projects</h1>
+    
+    <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card fade-in fade-in-delay-1">
+        <div class="project-image">Project 1</div>
+        <div class="project-content">
+          <h3 class="project-title">E-Commerce Platform</h3>
+          <p class="project-description">A full-stack e-commerce platform with user authentication, product management, and payment integration.</p>
+          <div class="project-tags">
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Stripe</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank">Live Demo</a>
+            <a href="#" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card fade-in fade-in-delay-2">
+        <div class="project-image">Project 2</div>
+        <div class="project-content">
+          <h3 class="project-title">Task Management App</h3>
+          <p class="project-description">A collaborative task management application with real-time updates and team features.</p>
+          <div class="project-tags">
+            <span class="tag">Vue.js</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Tailwind CSS</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank">Live Demo</a>
+            <a href="#" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card fade-in fade-in-delay-3">
+        <div class="project-image">Project 3</div>
+        <div class="project-content">
+          <h3 class="project-title">Weather Dashboard</h3>
+          <p class="project-description">A weather application with location-based forecasts and interactive maps.</p>
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Weather API</span>
+            <span class="tag">Charts.js</span>
+          </div>
+          <div class="project-links">
+            <a href="#" target="_blank">Live Demo</a>
+            <a href="#" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Cursor animation effect
+    const canvas = document.getElementById('cursor-bg');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    let circles = [];
+    document.addEventListener('mousemove', function(e) {
+      circles.push({
+        x: e.clientX,
+        y: e.clientY,
+        r: 0,
+        alpha: 0.5,
+        color: `rgba(47,107,255,0.3)`
+      });
+    });
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < circles.length; i++) {
+        let c = circles[i];
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, c.r, 0, 2 * Math.PI);
+        ctx.fillStyle = c.color;
+        ctx.globalAlpha = c.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        c.r += 1.5;
+        c.alpha -= 0.01;
+        if (c.alpha <= 0) circles.splice(i, 1), i--;
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
