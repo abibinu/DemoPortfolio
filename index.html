@@ -194,6 +194,21 @@
         margin-top: 20px;
       }
     }
+
+    /* Typing Animation */
+    #typing-text {
+      color: #222;
+    }
+    
+    #typing-text::after {
+      content: '|';
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -216,7 +231,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-text fade-in fade-in-delay-1">
-      <h1>Hi,<br> I'm <span>ABI</span><br> Full-Stack Dev</h1>
+      <h1>Hi,<br> I'm <span>ABI</span><br> <span id="typing-text">Full-Stack Dev</span></h1>
       <p style="letter-spacing: 1px;"><b>I'm a full-stack developer with a passion for creating user-friendly and visually appealing web applications.</b></p>
       <div style="height: 30px;"></div>
       <button class="fade-in fade-in-delay-2" onclick="window.location.href='contact.html'">Contact</button>
@@ -278,6 +293,55 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+</script>
+
+<script>
+// Typing animation
+const professions = [
+  "Full-Stack Dev",
+  "Software Engineer",
+  "Designer",
+  "Programmer",
+  "Developer"
+];
+
+let currentProfessionIndex = 0;
+let currentText = '';
+let letterIndex = 0;
+let isDeleting = false;
+let typingDelay = 100;
+let deletingDelay = 50;
+let newTextDelay = 2000;
+
+function type() {
+  const profession = professions[currentProfessionIndex];
+  
+  if (isDeleting) {
+    currentText = profession.substring(0, letterIndex - 1);
+    letterIndex--;
+    typingDelay = deletingDelay;
+  } else {
+    currentText = profession.substring(0, letterIndex + 1);
+    letterIndex++;
+    typingDelay = 100;
+  }
+
+  document.getElementById('typing-text').textContent = currentText;
+
+  if (!isDeleting && letterIndex === profession.length) {
+    typingDelay = newTextDelay;
+    isDeleting = true;
+  } else if (isDeleting && letterIndex === 0) {
+    isDeleting = false;
+    currentProfessionIndex = (currentProfessionIndex + 1) % professions.length;
+    typingDelay = 500;
+  }
+
+  setTimeout(type, typingDelay);
+}
+
+// Start the typing animation
+setTimeout(type, newTextDelay);
 </script>
 </body>
 </html>
