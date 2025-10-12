@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <canvas id="cursor-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1;"></canvas>
-  <title>ABI Portfolio</title>
+  <title>ABI Portfolio - About</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     /* Entrance Animations */
@@ -66,31 +65,10 @@
     /* Navbar */
     header {
       width: 100%;
-      padding: 20px 5%;
+      padding: 20px 10%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
-    }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 12px 15px;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-toggle span {
-      width: 30px;
-      height: 2px;
-      background-color: #222;
-      transition: 0.3s;
-      border-radius: 2px;
     }
 
     header h2 {
@@ -206,17 +184,6 @@
     }
 
     /* Responsive */
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-      }
-      .hero-img {
-        margin-top: 20px;
-      }
-    }
-
     @media (max-width: 768px) {
       header {
         padding: 15px 5%;
@@ -250,6 +217,7 @@
         right: 0;
       }
 
+      /* Add overlay when menu is active */
       nav.active::before {
         content: '';
         position: fixed;
@@ -288,7 +256,6 @@
         background: #2f6bff;
         color: white;
         border-radius: 8px;
-        border-bottom: none;
       }
 
       .nav-toggle.active span:nth-child(1) {
@@ -303,18 +270,24 @@
         transform: rotate(-45deg) translate(5px, -5px);
       }
     }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+      .hero-img {
+        margin-top: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
   <header>
-    <h2 class="fade-in">Portfolio</h2>
-    <div class="nav-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+  <h2 class="fade-in">Portfolio</h2>
     <nav>
       <ul>
         <li><a href="index.html" class="fade-in fade-in-delay-1"><b>Home</b></a></li>
@@ -394,30 +367,5 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
-
-// Mobile menu handling
-const navToggle = document.querySelector('.nav-toggle');
-const nav = document.querySelector('nav');
-
-navToggle.addEventListener('click', () => {
-  navToggle.classList.toggle('active');
-  nav.classList.toggle('active');
-});
-
-// Close menu when clicking a link
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    navToggle.classList.remove('active');
-    nav.classList.remove('active');
-  });
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (!nav.contains(e.target) && !navToggle.contains(e.target) && nav.classList.contains('active')) {
-    navToggle.classList.remove('active');
-    nav.classList.remove('active');
-  }
-});
 </script>
 </html>
