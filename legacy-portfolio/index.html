@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABI Portfolio - About</title>
+  <title>ABI Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     /* Entrance Animations */
@@ -65,21 +65,50 @@
     /* Navbar */
     header {
       width: 100%;
-      padding: 20px 10%;
+      padding: 20px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
 
     header h2 {
-  font-weight: 700;
-  font-size: 2rem;
-  font-family: 'Poppins', sans-serif;
-  font-style: normal;
-  font-variant: normal;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-weight: bold;
+      font-weight: 700;
+      font-size: 2rem;
+      font-family: 'Poppins', sans-serif;
+      font-style: normal;
+      font-variant: normal;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 12px 15px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 60px;
+      height: 45px;
+    }
+
+    .nav-toggle span {
+      width: 100%;
+      height: 2px;
+      background-color: #222;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
     }
 
     nav ul {
@@ -89,10 +118,11 @@
     }
 
     nav ul li a {
-  text-decoration: none;
-  color: #222;
-  font-weight: bold;
-  transition: 0.3s;
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      transition: 0.3s;
+      white-space: nowrap;
     }
 
     nav ul li a:hover,
@@ -173,7 +203,7 @@
     .hero-img img {
       width: 250px;
       border-radius: 50%;
-      
+
     }
 
     /* Blob Animation */
@@ -184,11 +214,22 @@
     }
 
     /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+      }
+      .hero-img {
+        margin-top: 20px;
+      }
+    }
+
     @media (max-width: 768px) {
       header {
         padding: 15px 5%;
       }
-      
+
       header h2 {
         font-size: 1.5rem;
       }
@@ -217,7 +258,6 @@
         right: 0;
       }
 
-      /* Add overlay when menu is active */
       nav.active::before {
         content: '';
         position: fixed;
@@ -256,6 +296,7 @@
         background: #2f6bff;
         color: white;
         border-radius: 8px;
+        border-bottom: none;
       }
 
       .nav-toggle.active span:nth-child(1) {
@@ -271,45 +312,51 @@
       }
     }
 
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-      }
-      .hero-img {
-        margin-top: 20px;
-      }
+    /* Typing Animation */
+    #typing-text {
+      color: #222;
+    }
+
+    #typing-text::after {
+      content: '|';
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
   </style>
 </head>
 <body>
 
+  <canvas id="cursor-bg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:-1;"></canvas>
   <!-- Navbar -->
   <header>
-  <h2 class="fade-in">Portfolio</h2>
+    <h2 class="fade-in">ABI BINU</h2>
+    <div class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <ul>
-        <li><a href="index.html" class="fade-in fade-in-delay-1"><b>Home</b></a></li>
-        <li><a href="about.html" class="active fade-in fade-in-delay-2"><b>About</b></a></li>
+        <li><a href="index.html" class="active fade-in fade-in-delay-1"><b>Home</b></a></li>
+        <li><a href="about.html" class="fade-in fade-in-delay-2"><b>About</b></a></li>
         <li><a href="skills.html" class="fade-in fade-in-delay-3"><b>Skills</b></a></li>
         <li><a href="work.html" class="fade-in fade-in-delay-1"><b>Work</b></a></li>
         <li><a href="contact.html" class="fade-in fade-in-delay-2"><b>Contact</b></a></li>
       </ul>
     </nav>
-  </header>
-
-  <!-- Hero Section -->
+  </header>  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-text fade-in fade-in-delay-1">
-      <h1>About Me</h1>
-      <p style="margin-bottom: 20px;"><b>Hello! I'm ABI, a passionate full-stack developer dedicated to building modern, user-friendly web applications. With a strong background in both front-end and back-end technologies, I love turning ideas into reality and solving real-world problems through code.</b></p>
-      <p style="margin-bottom: 20px;"><b>My journey in tech has been driven by curiosity and a desire to create impactful digital experiences. I enjoy collaborating with others, learning new skills, and staying up-to-date with the latest trends in web development.</b></p>
-      <p style="margin-bottom: 20px; font-size: 20px;"><b>Let's connect and create something amazing together!</b></p>
+      <h1>Hi,<br> I'm <span>ABI</span><br> <span id="typing-text">Full-Stack Dev</span></h1>
+      <p style="letter-spacing: 1px;"><b>I'm a full-stack developer with a passion for creating user-friendly and visually appealing web applications.</b></p>
       <div style="height: 30px;"></div>
       <button class="fade-in fade-in-delay-2" onclick="window.location.href='contact.html'">Contact</button>
       <div style="height: 70px;"></div>
-      
+
       <div class="socials fade-in fade-in-delay-3">
         <a href="https://www.linkedin.com/in/abi-binu-821560340/" target="_blank" title="LinkedIn" aria-label="LinkedIn">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.156 1.459-2.156 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.838-1.563 3.036 0 3.6 2.001 3.6 4.601v5.595z"/></svg>
@@ -327,8 +374,37 @@
     </div>
   </section>
 
-</body>
 <script>
+// Mobile menu handling
+const navToggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('nav');
+
+navToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  navToggle.classList.toggle('active');
+  nav.classList.toggle('active');
+});
+
+nav.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    nav.classList.remove('active');
+  });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', () => {
+  if (nav.classList.contains('active')) {
+    navToggle.classList.remove('active');
+    nav.classList.remove('active');
+  }
+});
+
 // Cursor animation effect
 const canvas = document.getElementById('cursor-bg');
 const ctx = canvas.getContext('2d');
@@ -368,4 +444,54 @@ function animate() {
 }
 animate();
 </script>
+
+<script>
+// Typing animation
+const professions = [
+  "Full-Stack Dev",
+  "Software Engineer",
+  "Designer",
+  "Programmer",
+  "Developer"
+];
+
+let currentProfessionIndex = 0;
+let currentText = '';
+let letterIndex = 0;
+let isDeleting = false;
+let typingDelay = 100;
+let deletingDelay = 50;
+let newTextDelay = 2000;
+
+function type() {
+  const profession = professions[currentProfessionIndex];
+
+  if (isDeleting) {
+    currentText = profession.substring(0, letterIndex - 1);
+    letterIndex--;
+    typingDelay = deletingDelay;
+  } else {
+    currentText = profession.substring(0, letterIndex + 1);
+    letterIndex++;
+    typingDelay = 100;
+  }
+
+  document.getElementById('typing-text').textContent = currentText;
+
+  if (!isDeleting && letterIndex === profession.length) {
+    typingDelay = newTextDelay;
+    isDeleting = true;
+  } else if (isDeleting && letterIndex === 0) {
+    isDeleting = false;
+    currentProfessionIndex = (currentProfessionIndex + 1) % professions.length;
+    typingDelay = 500;
+  }
+
+  setTimeout(type, typingDelay);
+}
+
+// Start the typing animation
+setTimeout(type, newTextDelay);
+</script>
+</body>
 </html>
