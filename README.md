@@ -46,25 +46,57 @@ VITE_TELEGRAM_CHAT_ID=your_chat_id_here
 npm run dev
 ```
 
-### 4. Build & Deployment
+## 🚀 Deployment Guide (Step-by-Step)
 
-**Automatic Deployment (Recommended):**
-The project is configured with **GitHub Actions**. Simply push your changes to the `main` branch, and GitHub will automatically build and deploy your site to the `gh-pages` branch.
+To get your portfolio live on GitHub Pages, follow these steps:
 
-**Manual Build:**
-To build the project for production locally:
+### 1. Create a GitHub Repository
+- Create a new repository on GitHub (e.g., `my-portfolio`).
+- Push this code to the `main` branch of your new repository.
 
+### 2. Configure GitHub Pages
+- Go to your repository on GitHub.com.
+- Click on **Settings** (top tab).
+- Click on **Pages** (left sidebar).
+- Under **Build and deployment > Source**, ensure it is set to **"Deploy from a branch"**.
+- Under **Branch**, select `gh-pages` and the folder `/ (root)`. Click **Save**.
+- *Note: The `gh-pages` branch will be created automatically after the first successful build.*
+
+### 3. Setup Contact Form Secrets (Optional)
+If you want the contact form to work in production:
+- Go to **Settings > Secrets and variables > Actions**.
+- Click **New repository secret**.
+- Add `VITE_TELEGRAM_BOT_TOKEN` with your bot token.
+- Add `VITE_TELEGRAM_CHAT_ID` with your chat ID.
+- The GitHub Action will automatically inject these during the build process.
+
+### 4. Automatic Deployment
+Every time you push changes to the `main` branch, the included GitHub Action will:
+1. Install dependencies.
+2. Build the production-ready site.
+3. Deploy it to the `gh-pages` branch.
+
+Your site will be live at: `https://<your-username>.github.io/<your-repo-name>/`
+
+---
+
+## 🛠️ Local Development
+
+### 1. Installation
 ```bash
-npm run build
+npm install
 ```
 
-**Manual Deploy:**
-To deploy manually from your machine:
+### 2. Run Locally
+```bash
+npm run dev
+```
 
+### 3. Manual Build/Deploy
+If you prefer not to use GitHub Actions, you can deploy manually:
 ```bash
 npm run deploy
 ```
 
 ## 📝 Note on Security
-
-Telegram credentials are used on the client-side in this static application. For production use, it is recommended to use a backend proxy or a service like Formspree to keep your secrets fully secure.
+Telegram credentials used on the client-side are visible in the network tab. For high-security needs, consider using a dedicated backend or a service like Formspree.
