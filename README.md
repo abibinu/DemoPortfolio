@@ -48,13 +48,18 @@ npm run dev
 
 ### 4. Build & Deployment
 
-To build the project for production:
+**Automatic Deployment (Recommended):**
+The project is configured with **GitHub Actions**. Simply push your changes to the `main` branch, and GitHub will automatically build and deploy your site to the `gh-pages` branch.
+
+**Manual Build:**
+To build the project for production locally:
 
 ```bash
 npm run build
 ```
 
-To deploy to GitHub Pages:
+**Manual Deploy:**
+To deploy manually from your machine:
 
 ```bash
 npm run deploy
