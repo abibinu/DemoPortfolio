@@ -1,55 +1,12 @@
-import React, { Suspense, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, MeshDistortMaterial, Float } from '@react-three/drei';
-
-const AnimatedShape = () => {
-  const meshRef = useRef();
-  const { scrollYProgress } = useScroll();
-
-  // Transform scroll progress to rotation and position
-  const rotationY = useTransform(scrollYProgress, [0, 1], [0, Math.PI * 2]);
-  const positionY = useTransform(scrollYProgress, [0, 0.5, 1], [0, -2, -5]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.5, 0.5]);
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.3;
-      meshRef.current.rotation.y = rotationY.get();
-      meshRef.current.position.y = positionY.get();
-      const s = scale.get();
-      meshRef.current.scale.set(s, s, s);
-    }
-  });
-
-  return (
-    <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
-      <Sphere ref={meshRef} args={[1, 100, 200]} scale={2.4}>
-        <MeshDistortMaterial
-          color="#3b82f6"
-          attach="material"
-          distort={0.4}
-          speed={1.5}
-          roughness={0.2}
-          metalness={0.8}
-        />
-      </Sphere>
-    </Float>
-  );
-};
+import React from 'react';
+import { motion } from 'framer-motion';
+import LiquidEther from './LiquidEther';
 
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-[120vh] flex flex-col items-center justify-center pt-20 px-4 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-          <Suspense fallback={null}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <pointLight position={[-10, -10, -5]} color="#3b82f6" intensity={0.5} />
-            <AnimatedShape />
-          </Suspense>
-        </Canvas>
+        <LiquidEther />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto text-center">
