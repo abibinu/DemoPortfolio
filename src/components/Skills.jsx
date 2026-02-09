@@ -70,7 +70,7 @@ const Skills = () => {
           </motion.h3>
 
           <div className="w-full md:w-64 h-64 relative">
-             <Canvas camera={{ position: [0, 0, 3] }}>
+             <Canvas camera={{ position: [0, 0, 3] }} dpr={[1, 2]}>
                 <Suspense fallback={null}>
                    <ambientLight intensity={0.5} />
                    <pointLight position={[10, 10, 10]} intensity={1} />

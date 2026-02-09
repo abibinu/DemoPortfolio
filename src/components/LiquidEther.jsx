@@ -122,6 +122,7 @@ const LiquidEther = () => {
       <Canvas
         camera={{ position: [0, 0, 1] }}
         gl={{ antialias: true, alpha: true }}
+        dpr={[1, 2]}
       >
         <LiquidEtherPlane />
       </Canvas>
