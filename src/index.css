@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2f6bff;
+  --color-secondary: #1d4ed8;
+  --color-dark: #0f172a;
+  --color-darker: #020617;
+}
+
+:root {
+  background-color: #020617;
+  color: white;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+@layer base {
+  * {
+    @apply border-gray-800;
+  }
+  body {
+    @apply bg-darker text-white;
+  }
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-500;
+}
