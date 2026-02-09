@@ -1,69 +1,102 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Globe, Cpu, Users, Zap } from 'lucide-react';
 
 const About = () => {
+  const bentoItems = [
+    {
+      title: "Collaboration",
+      description: "I prioritize client collaboration, fostering open communication and transparency throughout the development process.",
+      icon: <Users className="text-blue-400" size={32} />,
+      className: "md:col-span-2 md:row-span-1",
+      bg: "bg-blue-500/5"
+    },
+    {
+      title: "Tech Stack",
+      description: "Constantly evolving my toolkit with modern frameworks like React, Next.js, and Node.js.",
+      icon: <Cpu className="text-purple-400" size={32} />,
+      className: "md:col-span-1 md:row-span-2",
+      bg: "bg-purple-500/5"
+    },
+    {
+      title: "Performance",
+      description: "Building fast, scalable, and SEO-optimized applications is my top priority.",
+      icon: <Zap className="text-yellow-400" size={32} />,
+      className: "md:col-span-1 md:row-span-1",
+      bg: "bg-yellow-500/5"
+    },
+    {
+      title: "Remote Work",
+      description: "Highly flexible with time zones, based in India but working with clients globally.",
+      icon: <Globe className="text-green-400" size={32} />,
+      className: "md:col-span-1 md:row-span-1",
+      bg: "bg-green-500/5"
+    }
+  ];
+
   return (
-    <section id="about" className="py-24 px-4 bg-darker/50">
+    <section id="about" className="py-32 px-4 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="mb-20">
           <motion.h2
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-gray-500 uppercase tracking-widest text-sm font-bold mb-4"
+          >
+            Know About Me
+          </motion.h2>
+          <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-6xl font-bold max-w-3xl leading-tight"
           >
-            About <span className="text-primary">Me</span>
-          </motion.h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+            Full-Stack Developer and a little bit of everything.
+          </motion.h3>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="aspect-square rounded-2xl overflow-hidden border-2 border-primary/20 p-2">
-              <div className="w-full h-full bg-gray-800 rounded-xl flex items-center justify-center overflow-hidden">
-                <img
-                  src={`${import.meta.env.BASE_URL}assets/profile.jpg`}
-                  alt="Profile"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                  onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/400x400?text=ABI+BINU';
-                  }}
-                />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {bentoItems.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className={`${item.className} ${item.bg} border border-white/10 rounded-3xl p-8 backdrop-blur-sm hover:border-white/20 transition-all group`}
+            >
+              <div className="mb-6 p-3 w-fit bg-white/5 rounded-2xl group-hover:scale-110 transition-transform">
+                {item.icon}
               </div>
-            </div>
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10" />
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -z-10" />
-          </motion.div>
+              <h4 className="text-2xl font-bold mb-4">{item.title}</h4>
+              <p className="text-gray-400 leading-relaxed">
+                {item.description}
+              </p>
+            </motion.div>
+          ))}
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6 text-gray-300 text-lg leading-relaxed"
+            className="md:col-span-3 bg-gradient-to-r from-blue-600 to-purple-700 rounded-3xl p-12 mt-6 relative overflow-hidden group"
           >
-            <p>
-              Hello! I'm <span className="text-white font-semibold">ABI</span>, a passionate full-stack developer dedicated to building modern, user-friendly web applications. With a strong background in both front-end and back-end technologies, I love turning ideas into reality and solving real-world problems through code.
-            </p>
-            <p>
-              My journey in tech has been driven by curiosity and a desire to create impactful digital experiences. I enjoy collaborating with others, learning new skills, and staying up-to-date with the latest trends in web development.
-            </p>
-            <div className="grid grid-cols-2 gap-4 pt-4">
-              <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                <h4 className="text-primary font-bold text-2xl">4+</h4>
-                <p className="text-sm text-gray-400">Projects Completed</p>
+            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="text-center md:text-left">
+                <h3 className="text-3xl md:text-5xl font-bold mb-4">Let's work together</h3>
+                <p className="text-white/80 text-lg">I'm currently available for freelance projects and full-time roles.</p>
               </div>
-              <div className="p-4 bg-white/5 rounded-xl border border-white/10">
-                <h4 className="text-primary font-bold text-2xl">Many</h4>
-                <p className="text-sm text-gray-400">Skills Mastered</p>
-              </div>
+              <a
+                href="#contact"
+                className="px-12 py-5 bg-white text-black rounded-full font-bold text-xl hover:scale-105 transition-transform"
+              >
+                Get In Touch
+              </a>
             </div>
+            {/* Decorative circles */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-3xl -ml-32 -mb-32" />
           </motion.div>
         </div>
       </div>
