@@ -5,8 +5,8 @@ A highly professional, dark-themed, interactive developer portfolio built with R
 ## ✨ Features
 
 - **Modern UI**: Dark themed with elegant gradients and smooth animations.
-- **3D Background**: Interactive star field using React Three Fiber.
-- **Interactive Components**: 3D hero elements, typing animations, and hover effects.
+- **3D Liquid Background**: Custom GLSL "Liquid Ether" shader background for a premium aesthetic.
+- **Interactive Components**: Bento-style grid, scroll-synced 3D Icosahedrons, and dual-layered infinite tech marquees.
 - **Responsive Design**: Fully optimized for mobile, tablet, and desktop.
 - **Project Showcase**: Beautifully cards for your latest work.
 - **Functional Contact Form**: Integrated with Telegram for instant notifications.

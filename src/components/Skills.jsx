@@ -3,12 +3,11 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Icosahedron } from '@react-three/drei';
 
-const TechShape = () => {
+const TechShape = ({ scrollYProgress }) => {
   const meshRef = useRef();
-  const { scrollYProgress } = useScroll();
 
-  const rotationZ = useTransform(scrollYProgress, [0.2, 0.5], [0, Math.PI]);
-  const scale = useTransform(scrollYProgress, [0.2, 0.4, 0.6], [0.5, 1.2, 0.8]);
+  const rotationZ = useTransform(scrollYProgress, [0, 1], [0, Math.PI]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.5, 1.2, 0.8]);
 
   useFrame((state) => {
     if (meshRef.current) {
@@ -43,8 +42,14 @@ const techStack = [
 ];
 
 const Skills = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
   return (
-    <section id="skills" className="py-24 overflow-hidden bg-black relative">
+    <section id="skills" ref={sectionRef} className="py-24 overflow-hidden bg-black relative">
       <div className="max-w-7xl mx-auto px-4 mb-16 relative z-10">
         <motion.h2
           initial={{ opacity: 0, x: -20 }}
@@ -69,7 +74,7 @@ const Skills = () => {
                 <Suspense fallback={null}>
                    <ambientLight intensity={0.5} />
                    <pointLight position={[10, 10, 10]} intensity={1} />
-                   <TechShape />
+                   <TechShape scrollYProgress={scrollYProgress} />
                 </Suspense>
              </Canvas>
           </div>
@@ -101,7 +106,7 @@ const Skills = () => {
             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             className="flex gap-12 items-center text-5xl md:text-7xl font-black uppercase text-white/20"
           >
-            {Array(4).fill(techStack.reverse()).flat().map((tech, i) => (
+            {[...Array(4)].fill([...techStack].reverse()).flat().map((tech, i) => (
               <span key={i} className="hover:text-purple-500 transition-colors cursor-default">
                 {tech}
               </span>
