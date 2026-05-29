@@ -9,6 +9,7 @@ This repository contains a simple portfolio website project showcasing web devel
 ## Technologies Used
 
 - HTML5
+- CSS
 
 ## Project Structure
 
@@ -48,7 +49,7 @@ This project is open source and available under the MIT License.
 
 ## Author
 
-Abiola Binu
+Abi Binu
 
 ---
 
